@@ -18,7 +18,6 @@ const favoritesReducer = (state, action) => {
 function useFavorites() {
   const [favorites, dispatch] = useReducer(favoritesReducer, initialState);
 
-
   useEffect(() => {
     localStorage.setItem('favorites', JSON.stringify(favorites));
   }, [favorites]);
