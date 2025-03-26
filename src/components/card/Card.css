@@ -1,0 +1,51 @@
+.card1 {
+  width: 300px;
+  height: 470px;
+  background-image: linear-gradient(163deg, #00ff75 0%, #3700ff 100%);
+  border-radius: 20px;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  overflow: hidden;
+  position: relative;
+}
+
+.card1 img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 10px;
+}
+
+.card-content h2 {
+  font-size: 1.5rem;
+  margin: 0 0 10px 0;
+}
+
+.card1 button {
+  padding: 8px 15px;
+  border: 2px solid #00ff75;
+  background: none;
+  color: #00ff75;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+.card1 button:hover {
+  background: #00ff75;
+  color: #000;
+}

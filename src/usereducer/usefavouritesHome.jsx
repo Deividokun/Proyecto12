@@ -6,15 +6,9 @@ const favoritesReducer = (state, action) => {
   switch (action.type) {
     case 'TOGGLE_FAVORITE':
       const isFavorite = state.some((fav) => fav.id === action.payload.id);
-      const updatedState = isFavorite
+      return isFavorite
         ? state.filter((fav) => fav.id !== action.payload.id)
         : [...state, action.payload];
-
-      localStorage.setItem('favorites', JSON.stringify(updatedState));
-      return updatedState;
-
-    case 'SET_FAVORITES':
-      return action.payload;
 
     default:
       return state;
@@ -24,10 +18,10 @@ const favoritesReducer = (state, action) => {
 function useFavorites() {
   const [favorites, dispatch] = useReducer(favoritesReducer, initialState);
 
+
   useEffect(() => {
-    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-    dispatch({ type: 'SET_FAVORITES', payload: storedFavorites });
-  }, []);
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const toggleFavorite = (movie) => {
     dispatch({ type: 'TOGGLE_FAVORITE', payload: movie });

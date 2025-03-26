@@ -1,28 +1,30 @@
-import React from 'react';
-import useFavorites from '../../hooks/useFavourite';
+import React, { memo } from 'react';
+import Card from '../../components/card/Card';
+import useFavorites from "../../usereducer/usefavouritesHome";
 import './favourite.css';
 
-function Favourite() {
-  const { favorites, removeFavorite } = useFavorites();
+const Favourite = () => {
+  const { favorites, toggleFavorite } = useFavorites();
+
+  if (favorites.length === 0) {
+    return <p>No tienes personajes favoritos.</p>;
+  }
 
   return (
-    <section className="character-listt">
-      <h1 className="title">Mis favoritos</h1>
-      {favorites.length > 0 ? (
-        <ul className="favourites-container">
-          {favorites.map((movie) => (
-            <li className="card" key={movie.id}>
-              <h2>{movie.name}</h2>
-              <img src={movie.image} alt={`Imagen de ${movie.name}`} />
-              <button onClick={() => removeFavorite(movie.id)}>Eliminar</button>
-            </li>
-          ))}
-        </ul>
-      ) : (
-        <p className="no-favourites">No tienes favoritos aún.</p>
-      )}
+    <section className="favourites-container">
+      <h1>Mis favoritos:</h1>
+      <article className="favouritescardarticle">
+        {favorites.map((movie) => (
+          <Card
+            key={movie.id}
+            movie={movie}
+            isFavorite={true}
+            onToggleFavorite={toggleFavorite}
+          />
+        ))}
+      </article>
     </section>
   );
-}
+};
 
-export default Favourite;
+export default memo(Favourite);
