@@ -1,11 +1,13 @@
 
-
 h1 {  
   color: antiquewhite;
   margin-bottom: 20px;
   margin-top: 150px;
 }
-
+.therearenot{
+  margin-top: 150px;
+  text-align: center;
+}
 .favourites-container {
   width: 100%;
   display: flex;
@@ -85,12 +87,7 @@ h1 {
 */
 
 
-.no-favourites {
-  align-items: center;
-  text-align: center;
-  color: #ccc;
-  font-size: 1.2rem;
-}
+
 
 
 

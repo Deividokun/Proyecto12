@@ -1,17 +1,12 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import Card from '../../components/card/Card';
 import useFetch from '../../hooks/useFetch';
-import useFavorites from "../../usereducer/usefavouritesHome";
+import useFavorites from '../../usereducer/usefavouritesHome';
 import './home.css';
 
 function Home() {
   const { data: movies, loading, error } = useFetch('https://dragonball-api.com/api/characters');
   const { favorites, toggleFavorite } = useFavorites();
-
-  // Memoriza la función toggleFavorite para evitar recrearla en cada renderizado
-  const handleToggleFavorite = useCallback((movie) => {
-    toggleFavorite(movie);
-  }, [toggleFavorite]);
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -26,8 +21,8 @@ function Home() {
         <Card
           key={movie.id}
           movie={movie}
-          isFavorite={favorites.some((fav) => fav.id === movie.id)}
-          onToggleFavorite={handleToggleFavorite}
+          isFavorite={Array.isArray(favorites) && favorites.some((fav) => fav.id === movie.id)}
+          toggleFavorite={toggleFavorite}
         />
       ))}
     </section>

@@ -7,7 +7,7 @@ const Favourite = () => {
   const { favorites, toggleFavorite } = useFavorites();
 
   if (favorites.length === 0) {
-    return <p>No tienes personajes favoritos.</p>;
+    return <p className='therearenot'>No tienes personajes favoritos.</p>;
   }
 
   return (
