@@ -5,6 +5,7 @@ import './favourite.css';
 
 const Favourite = () => {
   const { favorites, toggleFavorite } = useFavorites();
+  
 
   if (favorites.length === 0) {
     return <p className='therearenot'>No tienes personajes favoritos.</p>;
@@ -19,7 +20,7 @@ const Favourite = () => {
             key={movie.id}
             movie={movie}
             isFavorite={true}
-            onToggleFavorite={toggleFavorite}
+            toggleFavorite={toggleFavorite}
           />
         ))}
       </article>
